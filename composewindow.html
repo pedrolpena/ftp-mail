@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <style>
+        input#from,input#to
+        {
+            width:200px;
+           position: absolute;
+           left: 80px;
+
+        }
+ 
+       input#subject
+        { 
+           width:545px;
+           position: absolute;
+           left: 80px;
+
+        }
+       textarea#messageArea
+       {
+          width: 620px;
+          height: 350px;
+          resize: none;
+
+       }
+       input#send
+        { 
+           
+           position: absolute;
+           right: 5px;
+
+        }
+
+
+    </style>
+    </head>
+
+    <body>
+        <form>
+            <lable for="from">From:</label><input id="from" type="text" name="from"><br>
+            <lable for="to">To:</label><input id="to" type="text" name="to"><br>
+            <lable for="subject">Subject:</label><input  id="subject" type="text" name="subject"><br><br>
+ 
+            <textarea id="messageArea"></textarea>           
+            <input id="send" type="submit" value="SEND">
+        </form>
+    </body>
+
+</html>

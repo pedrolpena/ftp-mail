@@ -23,12 +23,12 @@
     }
 
 
-    td#headerRowb
+    td#headerRowb,td#header1
     {
         background-color: lightblue; 
         border: 1px solid black;
         width: 690px;
-        rowspan: 2;
+        /*rowspan: 2;*/
     }
 
     td#headerRowc
@@ -64,7 +64,7 @@
    }
 
 
-    li, a
+   ul#headerList li
    {
        display: inline;
        text-decoration: none;
@@ -74,14 +74,26 @@
        border-radius: 10px 10px 0 0;
        text-align:bottom;
    }
-    a
-    {
-        padding: 10px 25px 17px 25px;
-    }
-    a:hover
+
+  ul#headerList a
+   {
+
+       text-decoration: none;
+       padding: 0;
+       background-color: blue;
+       color: white;        
+       border-radius: 10px 10px 0 0;
+       text-align:bottom;
+       padding: 10px 45px 17px 45px;
+   }
+
+
+    ul#headerList a:hover,table#tableLeft a:hover
     {
         background-color:orange;
     }
+    
+
     
    ul#headerList
     {
@@ -90,13 +102,7 @@
     }
 
 
-    table#tableLeft
-    {
 
-       height: 510px;
-       padding: 0; 
-       text-align:top; 
-    }
 
     input#buttonLeft
     {
@@ -117,7 +123,34 @@
         border: 0px;
     }
 
+    table#tableLeft
+    {
 
+       height: 510px;
+       padding: 0; 
+       
+    }
+
+    table#tableLeft tr
+    {
+
+       padding: 0; 
+       vertical-align:top;
+
+
+    }
+
+    table#tableLeft a
+    {
+       text-decoration: none;
+       padding: 0;
+       background-color: blue;
+       color: white;        
+       border-radius: 10px 10px 10px 10px;
+       text-align:bottom;
+       padding: 10px 5px 10px 5px;
+        
+    }
 
 
 
