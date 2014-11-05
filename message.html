@@ -5,7 +5,7 @@
            textarea#inboxMessage
           {
               width: 620px;
-              height: 430px;
+              height: 300px;
               resize: none;
 
            }
@@ -16,11 +16,23 @@
              right: 5px;
 
          }
+        
+ 
+       input#subject,input#from,input#to
+        { 
+           width:545px;
+           position: absolute;
+           left: 80px;
+
+        }
         </style>
     </head>
 
     <body>
-            <form>
+            <form name="inboxForm" action="composewindow.html" method="post">
+                <label for="from">From:</label><input id="from" type="text" name="from" readonly ><br><br>
+                <label for="subject">Subject:</label><input  id="subject" type="text" name="subject" readonly><br><br>
+                <label for="to">To:</label><input id="to" type="text" name="to" readonly><br><br>
                 <textarea id="inboxMessage" readonly > 	
 lorem ipsum dolor sit amet, consectetaur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 
