@@ -28,7 +28,7 @@
                    john.doe@whoknowswhere.com
                </td>
                <td id="subject">
-                   <a href="message.html">This is a test subject for development</a>  
+                   <a href="message.php">This is a test subject for development</a>  
                </td>
                <td id="date">
                    12:00 01/01/1970
@@ -39,7 +39,7 @@
                    john.doe@whoknowswhere.com
                </td>
                <td id="subject">
-                   <a href="message.html" >This is a test subject for development</a>  
+                   <a href="message.php" >This is a test subject for development</a>  
                </td>
                <td id="date">
                    12:00 01/01/1970
