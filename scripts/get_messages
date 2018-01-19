@@ -1,0 +1,42 @@
+#!/bin/bash
+configPath="/var/www/html/cfg/config.ini"
+USER=""
+PASSWORD=""
+inbox=`grep 'inbox[ ]*=[ ]*' $configPath`
+userName=`grep 'user[ ]*=[ ]*' $configPath`
+FTPHost=`grep 'FTPHost[ ]*=[ ]*' $configPath`
+FTPPath=`grep 'FTPPath[ ]*=[ ]*' $configPath`
+
+userName=${userName//[[:blank:]]/}
+inbox=${inbox//[[:blank:]]/}
+FTPHost=${FTPHost//[[:blank:]]/}
+FTPPath=${FTPPath//[[:blank:]]/}
+
+inbox=${inbox//\"/}
+FTPHost=${FTPHost//\"/}
+FTPPath=${FTPPath//\"/}
+IFSBak=$IFS
+IFS="="
+
+tokens=( $userName )
+userName=${tokens[1]}
+
+tokens=( $inbox )
+inbox=${tokens[1]}
+
+tokens=( $FTPHost )
+FTPHost=${tokens[1]}
+
+tokens=( $FTPPath )
+FTPPath=${tokens[1]}
+IFS=$IFSBak
+#echo $userName
+#echo $inbox
+#echo $FTPHost
+#echo $FTPPath
+#echo ftp://$FTPHost'/'$FTPPath'/'$userName/inbox' '$inbox
+if [ ! -d "$inbox/$userName"  ]; then
+    mkdir -p $inbox'/'$userName
+fi 
+
+ncftpget -u $USER -p $PASSWORD -DD $FTPHost $inbox'/'$userName $FTPPath'/'$userName/inbox/* 
