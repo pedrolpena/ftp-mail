@@ -39,4 +39,16 @@ if [ ! -d "$inbox/$userName"  ]; then
     mkdir -p $inbox'/'$userName
 fi 
 
-ncftpget -u $USER -p $PASSWORD -DD $FTPHost $inbox'/'$userName $FTPPath'/'$userName/inbox/* 
+#ncftpget -u $USER -p $PASSWORD -DD $FTPHost $inbox'/'$userName $FTPPath'/'$userName/inbox/* 
+cd $inbox/$userName
+echo $FTPPath'/'$userName'/'inbox
+ftp -invp $FTPHost <<EOF
+user $USER $PASSWORD
+cd $FTPPath/$userName/inbox
+mget *.*
+mdel *.*
+bye
+EOF
+
+
+
