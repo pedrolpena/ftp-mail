@@ -46,7 +46,7 @@ cp -R ftp-mail/* /var/www/html/<br/>
 
 -Update file paths and user names.<br/>
 
-gedit ftp-mail/php/cfg/config.ini<br/>
+gedit /var/www/html/cfg/config.ini<br/>
 
 [user_profile]<br/>
 user = ax07<br/>
