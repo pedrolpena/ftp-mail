@@ -1,12 +1,16 @@
 FTP-MAIL
 send messages over an ftp server BETA
 
--for ubunutu 16.04 replace all php5 with php<br/>
+-for ubunutu 14.04 <br/>
 sudo apt-get update<br/>
-sudo apt-get install apache2<br/>
-sudo apt-get install php5 libapache2-mod-php5<br/>
-sudo apt-get install ncftp<br/>
+sudo apt-get install apache2 php5 libapache2-mod-php5 ncftp<br/>
 sudo /etc/init.d/apache2 restart<br/>
+
+-for ubunutu 16.04<br/>
+sudo apt-get update<br/>
+sudo apt-get install apache2 php libapache2-mod-php ncftp<br/>
+sudo /etc/init.d/apache2 restart<br/>
+
 
 -clone/compile and run autoftp<br/>
 git clone https://github.com/pedrolpena/auto-ftp.git<br/>
