@@ -12,17 +12,16 @@
          input#reply
          { 
            
-             position: absolute;
-             right: 5px;
+           position: relative;
+           left: auto;
 
          }
         
  
        input#subject,input#from,input#to
         { 
-           width:545px;
-           position: absolute;
-           left: 80px;
+           max-width:530px;
+           width:100%;
 
         }
         </style>
@@ -57,15 +56,16 @@ $message=implode("",$fileContents);
 
 
 ?>
-    <body>
+    <body>    <table style="text-align: right;">
             <form name="inboxForm" action="composewindow.php" method="post">
-                <label for="from">From:</label><input value="<?=$from?>" id="from" type="text" name="from" readonly ><br><br>
-                <label for="subject">Subject:</label><input  value="<?=$subject?>" id="subject" type="text" name="subject" readonly><br><br>
-                <label for="to">To:</label><input value="<?=$to?>" id="to" type="text" name="to" readonly><br><br>
-                <textarea id="inboxMessage" name="inboxMessage" readonly ><?=$message?> </textarea>
-            </textarea>  
-            <input id="reply" type="submit" value="Reply">      
+                <tr> <td><label for="from">From:</label><input value="<?=$from?>" id="from" type="text" name="from" readonly ></td></tr>
+                <tr> <td><label for="subject">Subject:</label><input  value="<?=$subject?>" id="subject" type="text" name="subject" readonly></td></tr>
+                <tr> <td><label for="to">To:</label><input value="<?=$to?>" id="to" type="text" name="to" readonly></td></tr>
+                <tr> <td><textarea id="inboxMessage" name="inboxMessage" readonly ><?=$message?> </textarea></td></tr>
+           
+            <tr> <td><input id="reply" type="submit" value="Reply"> </td></tr>     
         </form>
+            </table>
     </body>
 
 </html>
