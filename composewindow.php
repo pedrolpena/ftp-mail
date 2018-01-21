@@ -4,15 +4,17 @@
     <style>
         input#from,input#to,input#subject
         {
-            width:545px;
-           position: absolute;
-           left: 80px;
+           max-width:530px;
+           width:100%;
+
+           
 
         }
  
 
        textarea#messageArea
        {
+		   
           width: 620px;
           height: 300px;
           resize: none;
@@ -21,8 +23,9 @@
        input#send
         { 
            
-           position: absolute;
-           right: 5px;
+           position: relative;
+           left: auto;
+     
 
         }
 
@@ -52,14 +55,17 @@ $user = $ini_array['user'];
 
 
 ?>
+    <table style="text-align: right;">
+		
         <form  method="post" action="sendmessage.php">
-            <label for="from">From:</label><input id="from" type="email" name="from" value="<?=$user?>" readonly><br><br>
-            <label for="to">To:</label><input id="to" type="email" name="to"  value="<?=$from?>" multiple><br><br>
-            <label for="subject">Subject:</label><input  id="subject" type="text" name="subject" value="<?=$subject?>"><br><br>
- 
-            <textarea id="messageArea" name="messageArea"><?=$message?></textarea>           
-            <input id="send" type="submit" value="SEND">
+           <tr> <td> <label for="from">From:</label><input id="from" type="email" name="from" value="<?=$user?>" readonly></td></tr>
+           <tr> <td> <label for="to">To:</label><input id="to" type="email" name="to"  value="<?=$from?>" multiple></td></tr>
+            <tr><td> <label for="subject">Subject:</label><input  id="subject" type="text" name="subject" value="<?=$subject?>"></td></tr>
+      <tr><td>  <textarea id="messageArea" name="messageArea"><?=$message?></textarea> </td>  </tr>        
+            <tr><td><input id="send" type="submit" value="SEND"></td>  </tr>
         </form>
+        
+    </table>
     </body>
 
 </html>
