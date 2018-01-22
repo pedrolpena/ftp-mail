@@ -4,8 +4,8 @@
         <style>
            textarea#inboxMessage
           {
-              width: 620px;
-              height: 300px;
+              width: 930px;
+              height: 250px;
               resize: none;
 
            }
@@ -20,7 +20,7 @@
  
        input#subject,input#from,input#to
         { 
-           max-width:530px;
+           max-width:840px;
            width:100%;
 
         }

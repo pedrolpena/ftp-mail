@@ -11,15 +11,12 @@
         <tr>
             <td id="tabRowa" colspan="3">
                 <ul id="headerList">
-                    <li><a href="messagelist.php" target="messageIframe">Inbox</a></li> 
-                    <li><a href="outboxlist.php" target="messageIframe">Outbox</a></li> 
-                    <li><a href="sentlist.php" target="messageIframe">Sent</a></li> 
-                    <li><a href="smswindow.php" target="messageIframe">SMS</a></li>    
-                </ul>
-            </td>
+                    <li><a href="messagelist.php" target="messageIframe">Inbox</a></li><li><a href="outboxlist.php" target="messageIframe">Outbox</a></li><li><a href="sentlist.php" target="messageIframe">Sent</a></li><li><a href="smswindow.php" target="messageIframe">SMS</a></li>
+                    </ul>
+</td>
         <tr >
             <td id="header1" colspan="3">
-               Atlantic Oceanographic & Meteorlogical Laboratory
+               AOML FTP Mail
             </td>
         </tr>
         </tr>
@@ -36,7 +33,7 @@
                 <iframe src="blank.php" name="messageIframe" id="messageIframe">
                 </iframe>
             </td>
-            <td id="headerRowc">c</td>
+            <td id="headerRowc">&nbsp;&nbsp;&nbsp;</td>
         </tr>
 
         <tr>

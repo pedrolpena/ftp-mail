@@ -9,7 +9,7 @@
 
     table#mainTable
     {
-        max-width: 800px;
+        max-width: 930px;
 
         text-align: center;
 
@@ -18,7 +18,7 @@
     td#tabRowa,td#headerRowa,td#footerRowa
     {
         background-color: lightblue; 
-        border: 1px solid black;
+       # border: 0px solid black;
         width: 100px;
     }
 
@@ -26,7 +26,7 @@
     td#headerRowb,td#header1
     {
         background-color: lightblue; 
-        border: 1px solid black;
+        #border: 0px solid black;
         width: 690px;
         /*rowspan: 2;*/
     }
@@ -34,19 +34,19 @@
     td#headerRowc
     {
         background-color: lightblue; 
-        border: 1px solid grey;
+        #border: 0px solid grey;
         width: 10px;
     }
 
     td#tabRowd,td#headerRowd,td#messageRowd,td#footerRowd
     {
         background-color: lightblue; 
-        border: 1px solid grey;
+        border: 0px solid grey;
     }
 
    td#headerRowa,td#headerRowb,td#headerRowc
    {
-       height: 510px;
+       height: 350px;
 
    }
     
@@ -55,7 +55,8 @@
        height: 30px;
        background-color: white; 
        text-align:left;
-       border: 0;
+       vertical-align:bottom;
+       #border: 0;
    }
 
    td#footerRowa
@@ -79,12 +80,13 @@
    {
 
        text-decoration: none;
-       padding: 0;
+       #padding: 0;
        background-color: blue;
        color: white;        
        border-radius: 0px 0px 0 0;
+       #border: 0px solid black;
        text-align:bottom;
-       padding: 10px 30px 17px 30px;
+       padding: 5px 30px 5px 30px;
    }
 
 
@@ -112,14 +114,14 @@
     
     td#buttonTd
     { 
-        border: 1px;
+        border: 0px;
         vertical-align:top;
 
     }
     iframe#messageIframe
     {
         height: 475px;
-        width: 640px;
+        width: 960px;
         border: 0px;
     }
 
@@ -148,9 +150,13 @@ z
        color: white;        
        border-radius: 0px 0px 0px 0px;
        text-align:bottom;
-       padding: 10px 5px 10px 5px;
+       padding: 5px 5px 5px 5px;
         
     }
+    
+    td, th {
+vertical-align:top;
+}
 
 
 

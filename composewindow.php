@@ -4,7 +4,7 @@
     <style>
         input#from,input#to,input#subject
         {
-           max-width:530px;
+           max-width:840px;
            width:100%;
 
            
@@ -15,8 +15,8 @@
        textarea#messageArea
        {
 		   
-          width: 620px;
-          height: 300px;
+          width: 930px;
+          height: 250px;
           resize: none;
 
        }
