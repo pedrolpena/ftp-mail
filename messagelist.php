@@ -12,7 +12,7 @@
             td, a
             {
                 font-size: 13px;
-                width:130px; 
+                width:100px; 
                 white-space: nowrap; 
                 overflow: hidden;
             }
@@ -65,7 +65,7 @@
                            echo " </tr>";
                          
 
-                  }//end while
+                  }//end for
 
            }//end if
            
