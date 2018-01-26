@@ -23,6 +23,13 @@
 
     <body>
        <table>
+           <tr>
+		   <td><u><b>Sender</b></u></td>
+           <td><u><b>Subject</b></u></td>
+           <td>    </td>
+           <td><u><b>Date Received</b></u></td>
+           </tr>
+           		   
 		   <?php
 		   $ini_array = parse_ini_file("./cfg/config.ini");
 		   $user=$ini_array['user'];
@@ -31,33 +38,40 @@
            // Open a directory, and read its contents
            if (is_dir($inboxDir))
            {
-               if ($dh = opendir($inboxDir))
+			   $files = glob($inboxDir."/*.*");
+               usort($files, function($a, $b)
                {
-                   while (($fileName = readdir($dh)) !== false)
+               return filemtime($a) < filemtime($b);
+               });
+
+				
+                   foreach($files as $AbsoluteFileName)
                    {
-					   if($fileName != "." && $fileName != "..")
-					   {
+                           $fileName=basename($AbsoluteFileName);
 						   $fileContents = file($inboxDir."/".$fileName);//file into array
 						   $tmp = preg_split("/:/",$fileContents[0]);
 						   $from=$tmp[1];
 						   $tmp = preg_split("/:/",$fileContents[2]);
 						   $subject=$tmp[1];
 						   echo "<tr>";
-						   echo "<td>";
-                           //echo "" . $fileName . "";
-                           echo "</td>";
+						   echo "<td>".$from."</td>";
                            echo "<td id=\"subject\">";
-                           echo $from." "."<a href=\"message.php?fileName=".$inboxDir."/".$fileName."\">".$subject."</a>";  
+                           echo "<a href=\"message.php?fileName=".$inboxDir."/".$fileName."\">".$subject."</a>";  
                            echo " </td>";
-                           //echo "<td id=""date"">";
-                           //echo "    12:00 01/01/1970";
-                           //echo "</td>";
+                           echo "<td>    </td>";
+                           echo "<td id=\"date\">";
+                           echo date('F d Y, H:i:s', filemtime($AbsoluteFileName));
+                           echo "</td>";
                            echo " </tr>";
-                       }
-                  }
-                  closedir($dh);
-               }
-           }
+                         
+
+                  }//end while
+
+           }//end if
+           
+
+   
+           
             ?>
        </table>
     </body>
