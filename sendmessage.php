@@ -11,6 +11,3 @@ $file=$queue."/".time()."_".$user."_EMAIL.txt";
 file_put_contents($file,$email);
 header('Location: messagelist.php');
 ?>
-
-
-
