@@ -60,7 +60,7 @@
                            echo " </td>";
                            echo "<td>    </td>";
                            echo "<td id=\"date\">";
-                           echo date('F d Y, H:i:s', filemtime($AbsoluteFileName));
+                           echo date('m/d/y H:i', filemtime($AbsoluteFileName));
                            echo "</td>";
                            echo " </tr>";
                          
