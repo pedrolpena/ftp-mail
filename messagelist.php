@@ -52,7 +52,8 @@
                            $tmp = preg_split("/:/",$fileContents[0]);
                            $from=$tmp[1];
                            $tmp = preg_split("/:/",$fileContents[2]);
-                           $subject=$tmp[1];
+                           $tmp[0]="";
+                           $subject=implode("",$tmp);
                            echo "<tr>";
                            echo "<td>".$from."</td>";
                            echo "<td id=\"subject\">";
