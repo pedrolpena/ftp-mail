@@ -48,13 +48,13 @@
                    foreach($files as $AbsoluteFileName)
                    {
                            $fileName=basename($AbsoluteFileName);
-						   $fileContents = file($inboxDir."/".$fileName);//file into array
-						   $tmp = preg_split("/:/",$fileContents[0]);
-						   $from=$tmp[1];
-						   $tmp = preg_split("/:/",$fileContents[2]);
-						   $subject=$tmp[1];
-						   echo "<tr>";
-						   echo "<td>".$from."</td>";
+                           $fileContents = file($inboxDir."/".$fileName);//file into array
+                           $tmp = preg_split("/:/",$fileContents[0]);
+                           $from=$tmp[1];
+                           $tmp = preg_split("/:/",$fileContents[2]);
+                           $subject=$tmp[1];
+                           echo "<tr>";
+                           echo "<td>".$from."</td>";
                            echo "<td id=\"subject\">";
                            echo "<a href=\"message.php?fileName=".$inboxDir."/".$fileName."\">".$subject."</a>";  
                            echo " </td>";
