@@ -63,7 +63,26 @@
    {
        height: 30px;
    }
+   td#messageHeader
+   {
+    float: center;
+    text-align: center;
+    color: black;
 
+   }
+   td#date
+   {
+       float: center;
+       text-align: center;
+   }
+   td, a
+   {
+       font-size: 13px;
+       width:100px; 
+       white-space: nowrap; 
+       overflow: hidden;
+                
+   }   
 
    ul#headerList li
    {

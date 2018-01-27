@@ -2,34 +2,21 @@
 <html>
     <head>
     <meta http-equiv="refresh" content="5">
+    <link rel="stylesheet" type="text/css" href="mailstyle.css">
     <style>
-        td
-        {
-            font-size: 13px;
-            width:100px; 
-            white-space: nowrap; 
-            #overflow: hidden;
-            #position: absolute;
-            /*right: 10px;*/
-            float: center;
-                
-                
-        }
-        
-        td#date
-        {
-            #position: absolute;
-            /*right: 10px;*/
-            float: center;
-            text-align: center;
-
-        }        
     </style>
     </head>
 
     <body>
         <table>
-		   <td><u><b>Recipient</b></u></td>
+		   <tr>
+			   <td></td>
+			   <td></td>
+			   <td id="messageHeader"><u><b>OUTBOX</b></u></td>
+			   <td></td>
+			   <td></td>
+		   </tr>			
+		   <td><u><b>To</b></u></td>
            <td><u><b>Subject</b></u></td>
            <td>    </td>
            <td id="date"><u><b>Date Created (GMT)</b></u></td>
@@ -55,19 +42,25 @@ $queue = $ini_array['outboxQueue'];
                    foreach($files as $AbsoluteFileName)
                    {
                            $fileName=basename($AbsoluteFileName);
+                           $ext = strtolower(pathinfo($AbsoluteFileName, PATHINFO_EXTENSION));
+                           $to=$fileName;
+                           $subject="";
                                       
                            if(preg_match('/'.$user.'_EMAIL/',$fileName) )
                            {
-                               $fileContents = file($queue."/".$fileName);//file into array
-                               $tmp = preg_split("/:/",$fileContents[1]);
-                               $from=$tmp[1];
-                               $tmp = preg_split("/:/",$fileContents[2]);
-                               $tmp[0]="";
-                               $subject=implode("",$tmp);
+							   if( $ext == "txt" )
+							   {
+                                   $fileContents = file($queue."/".$fileName);//file into array
+                                   $tmp = preg_split("/:/",$fileContents[1]);
+                                   $to=$tmp[1];
+                                   $tmp = preg_split("/:/",$fileContents[2]);
+                                   $tmp[0]="";
+                                   $subject=implode("",$tmp);
+                               }//end if
                                $fileNameTokens=preg_split("/_/",$fileName);
                                $timeCreated = new DateTime("@$fileNameTokens[0]");                             
                                echo "<tr>";
-                               echo "<td>".$from."</td>";
+                               echo "<td>".$to."</td>";
                                echo "<td id=\"subject\">";
                                echo "<a href=\"message.php?fileName=".$queue."/".$fileName."\">".$subject."</a>";  
                                echo " </td>";
@@ -80,6 +73,10 @@ $queue = $ini_array['outboxQueue'];
                   }//end for
 
            }//end if
+           else
+           {
+			   //mkdir($queue,0775,true);
+           }//end else             
 
 ?>
         </table>

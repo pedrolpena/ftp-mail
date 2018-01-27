@@ -30,7 +30,7 @@
 <?php
 
 $pp=basename($_SERVER['HTTP_REFERER']);
-$caller_page=$_POST["caller_page"];
+//$caller_page=$_POST["caller_page"];
 $from="";
 $to="";
 $subject="";
@@ -45,12 +45,14 @@ $from=$tmp[1];
 $tmp = preg_split("/[:@]/",$fileContents[1]);
 $to=$tmp[1];
 $tmp = preg_split("/:/",$fileContents[2]);
-$subject=$tmp[1];
+$tmp[0]="";
+$subject=implode("",$tmp);
+//$subject=$tmp[1];
 
 //extract message
-$fileContents[0]="";
-$fileContents[1]="";
-$fileContents[2]="";
+//$fileContents[0]="";
+//$fileContents[1]="";
+//$fileContents[2]="";
 
 $message=implode("",$fileContents);
 

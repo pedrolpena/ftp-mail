@@ -2,32 +2,22 @@
 <html>
     <head>
         <meta http-equiv="refresh" content="5">
+        <link rel="stylesheet" type="text/css" href="mailstyle.css">
         <style>
-            td#date
-            {
-                #position: absolute;
-                /*right: 10px;*/
-                float: center;
-                text-align: center;
-
-            }
-            td, a
-            {
-                font-size: 13px;
-                width:100px; 
-                white-space: nowrap; 
-                overflow: hidden;
-                
-            }
-
 
         </style>
     </head>
 
     <body>
        <table>
+		   <tr>
+			   <td></td>
+			   <td id="messageHeader"><u><b>INBOX</b></u></td>
+			   <td></td>
+			   <td></td>
+		   </tr>		   
            <tr>
-		   <td><u><b>Sender</b></u></td>
+		   <td><u><b>From</b></u></td>
            <td><u><b>Subject</b></u></td>
            <td id="date">    </td>
            <td id="date"><u><b>Date Rcvd (GMT)</b></u></td>
@@ -75,7 +65,10 @@
                   }//end for
 
            }//end if
-           
+           else
+           {
+			   //mkdir($inboxDir,0775,true);
+           }//end else           
 
    
            
