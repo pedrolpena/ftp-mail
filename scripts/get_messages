@@ -30,25 +30,28 @@ FTPHost=${tokens[1]}
 tokens=( $FTPPath )
 FTPPath=${tokens[1]}
 IFS=$IFSBak
-#echo $userName
-#echo $inbox
-#echo $FTPHost
-#echo $FTPPath
-#echo ftp://$FTPHost'/'$FTPPath'/'$userName/inbox' '$inbox
-if [ ! -d "$inbox/$userName"  ]; then
-    mkdir -p $inbox'/'$userName
-fi 
+
+if [ ! -d "$inbox/$userName/tmp"  ]; then
+    mkdir -p $inbox'/'$userName'/tmp'
+    chgrp www-data $inbox/$userName
+    chmod 775 $inbox/$userName
+    chown www-data $inbox/$userName'/tmp'
+    chgrp www-data $inbox/$userName'/tmp'
+    chmod 775 $inbox/$userName'/tmp'
+    chown www-data $inbox/$userName'/tmp'   
+fi  
 
 #ncftpget -u $USER -p $PASSWORD -DD $FTPHost $inbox'/'$userName $FTPPath'/'$userName/inbox/* 
-cd $inbox/$userName
+cd $inbox/$userName'/tmp'
 echo $FTPPath'/'$userName'/'inbox
-ftp -invp $FTPHost <<EOF
+ftp -4 -invp $FTPHost <<EOF
 user $USER $PASSWORD
 cd $FTPPath/$userName/inbox
 mget *.*
 mdel *.*
 bye
 EOF
+mv $inbox/$userName'/tmp/'* $inbox/$userName/
 
 
 
