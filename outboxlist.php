@@ -56,6 +56,14 @@ $queue = $ini_array['outboxQueue'];
                                    $tmp = preg_split("/:/",$fileContents[2]);
                                    $tmp[0]="";
                                    $subject=implode("",$tmp);
+                                   if(trim($to) == "")
+                                   {
+                                       $to="No Recipient";
+                                   }
+                                   if(trim($subject) == "")
+                                   {
+							           $subject="No Subject";
+							       }                                   
                                }//end if
                                $fileNameTokens=preg_split("/_/",$fileName);
                                $timeCreated = new DateTime("@$fileNameTokens[0]");                             

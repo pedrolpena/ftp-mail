@@ -48,6 +48,15 @@
                            $tmp = preg_split("/:/",$fileContents[2]);
                            $tmp[0]="";
                            $subject=implode("",$tmp);
+                           if(trim($subject) == "")
+                           {
+						       $subject="No Subject";
+							}
+							if(trim($from) == "")
+                            {
+                                $from="No Sender";
+                            }
+							
                            $fileNameTokens=preg_split("/_/",$fileName);
                            $sentTime = new DateTime("@$fileNameTokens[0]");
                            $createdTime = new DateTime("@".filemtime($AbsoluteFileName));

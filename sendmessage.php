@@ -18,6 +18,22 @@ $from=$_POST["from"];
 $to=$_POST["to"];
 $subject=$_POST["subject"];
 $message=$_POST["messageArea"];
+if(trim($from) == "")
+{
+    $from="No Sender";
+}
+if(trim($to) == "")
+{
+    $to="No Recipient";
+}
+if(trim($subject) == "")
+{
+    $subject="No Subject";
+}
+if(trim($message) == "No Message")
+{
+    $message="";
+}
 $email="from:".$from."\nto:".$to."\nsubject:".$subject."\n".$message;
 $fileName=time()."_".$user."_EMAIL.txt";
 $queueFile=$queue."/".$fileName;
