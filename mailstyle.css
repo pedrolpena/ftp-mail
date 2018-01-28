@@ -20,6 +20,7 @@
         background-color: lightblue; 
        # border: 0px solid black;
         width: 100px;
+        padding:unset;
     }
 
 
@@ -27,7 +28,7 @@
     {
         background-color: lightblue; 
         #border: 0px solid black;
-        width: 690px;
+        #width: 690px;
         /*rowspan: 2;*/
     }
 
@@ -35,7 +36,7 @@
     {
         background-color: lightblue; 
         #border: 0px solid grey;
-        width: 10px;
+        #width: 10px;
     }
 
     td#tabRowd,td#headerRowd,td#messageRowd,td#footerRowd
@@ -78,7 +79,7 @@
    td, a
    {
        font-size: 13px;
-       width:100px; 
+       #width:100px; 
        white-space: nowrap; 
        overflow: hidden;
                 
@@ -94,24 +95,24 @@
        border-radius: 0px 0px 0 0;
        text-align:bottom;
    }
+  
 
   ul#headerList a
    {
 
        text-decoration: none;
-       #padding: 0;
        background-color: blue;
        color: white;        
        border-radius: 0px 0px 0 0;
-       #border: 0px solid black;
        text-align:bottom;
        padding: 5px 30px 5px 30px;
    }
 
 
-    ul#headerList a:hover,table#tableLeft a:hover
+    ul#headerList a:hover
     {
         background-color:orange;
+       
     }
     
 
@@ -146,35 +147,71 @@
 
     table#tableLeft
     {
-z
+
        height: 510px;
        padding: 0; 
+      
        
     }
 
     table#tableLeft tr
     {
-
-       padding: 0; 
        vertical-align:top;
-
+       background-color: lightblue;
 
     }
 
-    table#tableLeft a
+    ul#leftList
     {
+        padding:0;
+        
+        
+        
+
+    }
+    
+    ul#leftList li
+    {
+       text-decoration: none;
+       padding: 0;
+       background-color: lightblue;
+       color: white;        
+       padding: 0px 0px 0px 0px;
+       list-style: none;
+       width: auto;
+      
+       
+       
+       
+        
+    }
+    
+  ul#leftList a
+   {
+
        text-decoration: none;
        padding: 0;
        background-color: blue;
        color: white;        
-       border-radius: 0px 0px 0px 0px;
        text-align:bottom;
-       padding: 5px 5px 5px 5px;
-        
-    }
+       padding: 9px 5px 9px 5px;
+       display: block;
+       width: 80px;
+       
+  
+
+   }    
+    
+  
+    ul#leftList a:hover
+    {
+        background-color:orange;
+      
+    }     
     
     td, th {
 vertical-align:top;
+
 }
 
 
