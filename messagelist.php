@@ -32,7 +32,7 @@
            // Open a directory, and read its contents
            if (is_dir($inboxDir))
            {
-			   $files = glob($inboxDir."/*.*");
+			   $files = glob($inboxDir."/*_EMAIL.txt");
                usort($files, function($a, $b)
                {
                return filemtime($a) < filemtime($b);
@@ -42,6 +42,7 @@
                    foreach($files as $AbsoluteFileName)
                    {
                            $fileName=basename($AbsoluteFileName);
+                           $ext = strtolower(pathinfo($AbsoluteFileName, PATHINFO_EXTENSION));
                            $fileContents = file($inboxDir."/".$fileName);//file into array
                            $tmp = preg_split("/:/",$fileContents[0]);
                            $from=$tmp[1];

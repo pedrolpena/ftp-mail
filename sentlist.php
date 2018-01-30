@@ -33,7 +33,7 @@
            // Open a directory, and read its contents
            if (is_dir($sentDir))
            {
-			   $files = glob($sentDir."/*.*");
+			   $files = glob($sentDir."/*_EMAIL.txt");
                usort($files, function($a, $b)
                {
                return filemtime($a) < filemtime($b);
