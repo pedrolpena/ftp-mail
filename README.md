@@ -75,4 +75,40 @@ PASSWORD="password goes here"<br>
 chmod +x /var/www/html/scripts/get_messages<br>
 sudo ln -s /var/www/html/scripts/get_messages /usr/local/sbin<br>
 
-    create a crontan that runs get_messages every 2 minutes<br>
+-make sure only the local computer(127.0.0.1) can access the webpage.
+You can do this by modifying the Listen directive.
+
+On Ubuntu 16.04
+
+edit the file
+/etc/apache2/ports.conf
+
+Below is an example of what it looks like on my test computer.
+
+```
+# If you just change the port or add more ports here, you will likely also
+# have to change the VirtualHost statement in
+# /etc/apache2/sites-enabled/000-default.conf
+
+Listen 127.0.0.1:80
+
+<IfModule ssl_module>
+	Listen 127.0.0.1:443
+</IfModule>
+
+<IfModule mod_gnutls.c>
+	Listen 127.0.0.1:443
+</IfModule>
+
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+```
+
+Restart the apache daemon
+
+```
+sudo service apache2 restart
+```
+
+
+
+create a crontab that runs get_messages every 2 minutes<br>
