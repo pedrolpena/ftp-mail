@@ -51,7 +51,7 @@ mget *.*
 mdel *.*
 bye
 EOF
-mv $inbox/$userName'/tmp/'* $inbox/$userName/
+mv $inbox/$userName'/tmp/'* $inbox/$userName/ 2>/dev/null
 
 
 
