@@ -27,7 +27,7 @@ sudo /etc/init.d/apache2 restart
 ```
 -clone/compile and run autoftp
 ```bash
-git clone https://github.com/pedrolpena/auto-ftp.git<br>
+git clone https://github.com/pedrolpena/auto-ftp.git
 ```
 -Open browser and type localhost int the address bar<br>
 to confirm apache is working.<br>
