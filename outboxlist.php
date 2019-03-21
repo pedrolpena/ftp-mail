@@ -25,7 +25,7 @@
 <?php
 
 $ini_array = parse_ini_file("./cfg/config.ini");
-$user=$ini_array['user'];
+$mailUser=$ini_array['mailUser'];
 $queue = $ini_array['outboxQueue'];
 
 
@@ -46,7 +46,7 @@ $queue = $ini_array['outboxQueue'];
                            $to=$fileName;
                            $subject="";
                                       
-                           if(preg_match('/'.$user.'_EMAIL/',$fileName) )
+                           if(preg_match('/'.$mailUser.'_EMAIL/',$fileName) )
                            {
 							   if( $ext == "txt" )
 							   {

@@ -51,14 +51,14 @@ $subject=$_POST["subject"];
 $message="\n\n\n\n".$from." wrote:\n".$_POST["inboxMessage"];
 $subject ="Re: ".$subject;
 }
-$user = $ini_array['user'];
+$mailUser = $ini_array['mailUser'];
 
 
 ?>
     <table style="text-align: right;">
 		
         <form  method="post" action="sendmessage.php">
-           <tr> <td> <label for="from">From:</label><input id="from" type="email" name="from" value="<?=$user?>" readonly></td></tr>
+           <tr> <td> <label for="from">From:</label><input id="from" type="email" name="from" value="<?=$mailUser?>" readonly></td></tr>
            <tr> <td> <label for="to">To:</label><input id="to" type="email" name="to"  value="<?=$from?>" multiple></td></tr>
             <tr><td> <label for="subject">Subject:</label><input  id="subject" type="text" name="subject" value="<?=$subject?>"></td></tr>
       <tr><td>  <textarea id="messageArea" name="messageArea"><?=$message?></textarea> </td>  </tr>        

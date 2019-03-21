@@ -1,8 +1,8 @@
 <?php
 $ini_array = parse_ini_file("./cfg/config.ini");
 $queue = $ini_array['outboxQueue'];
-$user = $ini_array['user'];
-$sentDir = $ini_array['sent']."/".$user;
+$mailUser = $ini_array['mailUser'];
+$sentDir = $ini_array['sent']."/".$mailUser;
 
 if (!is_dir($sentDir))
 {
@@ -35,7 +35,7 @@ if(trim($message) == "No Message")
     $message="";
 }
 $email="from:".$from."\nto:".$to."\nsubject:".$subject."\n".$message;
-$fileName=time()."_".$user."_EMAIL.txt";
+$fileName=time()."_".$mailUser."_EMAIL.txt";
 $queueFile=$queue."/".$fileName;
 $sentFile=$sentDir."/".$fileName;
 file_put_contents($queueFile,$email);

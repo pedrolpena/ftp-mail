@@ -12,28 +12,28 @@
        <table>
 		   <tr>
 			   <td></td>
-			   <td id="messageHeader"><u><b>SENT MESSAGES</b></u></td>
+			   <td id="messageHeader"><u><b>TRASH</b></u></td>
 			   <td></td>
 			   <td></td>
-		   </tr>
+		   </tr>		   
            <tr>
-		   <td><u><b>To</b></u></td>
+		   <td><u><b>From</b></u></td>
+		   <td><u><b>To</u></td>
            <td><u><b>Subject</b></u></td>
            <td id="date">    </td>
-           <td id="date"><u><b>Date Created (GMT)</b></u></td>
-           <!--<td id="date"><u><b>Date Sent (GMT)</b></u></td> -->          
+           <td id="date"><u><b>Date Rcvd (GMT)</b></u></td>
+           <td id="date"><u><b>Date Sent (GMT)</b></u></td>           
            </tr>
            		   
 		   <?php
 		   $ini_array = parse_ini_file("./cfg/config.ini");
 		   $mailUser=$ini_array['mailUser'];
-           $sentDir = $ini_array['sent']."/".$mailUser;
-           $queue = $ini_array['outboxQueue'];
+           $trashDir = $ini_array['trash']."/".$mailUser;
            
            // Open a directory, and read its contents
-           if (is_dir($sentDir))
+           if (is_dir($trashDir))
            {
-			   $files = glob($sentDir."/*_EMAIL.txt");
+			   $files = glob($trashDir."/*_EMAIL.txt");
                usort($files, function($a, $b)
                {
                return filemtime($a) < filemtime($b);
@@ -42,40 +42,42 @@
 				
                    foreach($files as $AbsoluteFileName)
                    {
-					       clearstatcache();
                            $fileName=basename($AbsoluteFileName);
-                           $queueTemp=$queue."/".$fileName;
-                           $queueFileBase = pathinfo($queue."/".$fileName, PATHINFO_FILENAME);
-                           //$sentFileBase = pathinfo($AbsoluteFileName, PATHINFO_FILENAME);
-                           $txt=$queue."/".$queueFileBase.".txt";
-                           $zip=$queue."/".$queueFileBase.".zip";
-                           if (!file_exists($txt) && !file_exists($zip)){
-                           $fileContents = file($sentDir."/".$fileName);//file into array
-                           $tmp = preg_split("/:/",$fileContents[1]);
+                           $ext = strtolower(pathinfo($AbsoluteFileName, PATHINFO_EXTENSION));
+                           $fileContents = file($trashDir."/".$fileName);//file into array
+                           $tmp = preg_split("/:/",$fileContents[0]);
+                           $from=$tmp[1];
+                           $tmp = preg_split("/:/",$fileContents[1]);                           
                            $to=$tmp[1];
                            $tmp = preg_split("/:/",$fileContents[2]);
                            $tmp[0]="";
                            $subject=implode("",$tmp);
-                           if(trim($to) == "")
+                           if(trim($subject) == "")
                            {
-                               $to="No Recipient";
-                           }
-                           if(trim($subject) == ""){
-							   $subject="No Subject";
-							   }
+						       $subject="No Subject";
+							}
+							if(trim($from) == "")
+                            {
+                                $from="No Sender";
+                            }
+ 							if(trim($to) == "")
+                            {
+                                $to="No Recipient";
+                            }                           
+							
                            $fileNameTokens=preg_split("/_/",$fileName);
                            $sentTime = new DateTime("@$fileNameTokens[0]");
                            $createdTime = new DateTime("@".filemtime($AbsoluteFileName));
                            echo "<tr>";
+                           echo "<td>".$from."</td>";
                            echo "<td>".$to."</td>";
                            echo "<td id=\"subject\">";
-                           echo "<a href=\"message.php?fileName=".$sentDir."/".$fileName."\">".$subject."</a>";  
+                           echo "<a href=\"message.php?fileName=".$trashDir."/".$fileName."\">".$subject."</a>";  
                            echo " </td>";
                            echo "<td id=\"date\">";
                            echo "<td id=\"date\">".$createdTime->format('m/d/y H:i')."</td>";
-                           //echo "<td id=\"date\">".$sentTime->format('m/d/y H:i')."</td>";                          
+                           echo "<td id=\"date\">".$sentTime->format('m/d/y H:i')."</td>";                          
                            echo " </tr>";
-					   }//end if
                          
 
                   }//end for
@@ -83,9 +85,8 @@
            }//end if
            else
            {
-			   //mkdir($sentDir,0775,true);
-           }//end else
-           
+			   //mkdir($trashDir,0775,true);
+           }//end else           
 
    
            

@@ -10,24 +10,27 @@
 
     <body>
        <table>
+		   <form  method="post" action="trashfiles.php">
 		   <tr>
 			   <td></td>
 			   <td id="messageHeader"><u><b>INBOX</b></u></td>
 			   <td></td>
 			   <td></td>
 		   </tr>		   
-           <tr>
+           <tr>			   
 		   <td><u><b>From</b></u></td>
            <td><u><b>Subject</b></u></td>
            <td id="date">    </td>
            <td id="date"><u><b>Date Rcvd (GMT)</b></u></td>
-           <td id="date"><u><b>Date Sent (GMT)</b></u></td>           
+           <td id="date"><u><b>Date Sent (GMT)</b></u></td> 
+           <td></td>
+           <td><u><b>Delete</b></u></td>         
            </tr>
            		   
 		   <?php
 		   $ini_array = parse_ini_file("./cfg/config.ini");
-		   $user=$ini_array['user'];
-           $inboxDir = $ini_array['inbox']."/".$user;
+		   $mailUser=$ini_array['mailUser'];
+           $inboxDir = $ini_array['inbox']."/".$mailUser;
            
            // Open a directory, and read its contents
            if (is_dir($inboxDir))
@@ -68,7 +71,9 @@
                            echo " </td>";
                            echo "<td id=\"date\">";
                            echo "<td id=\"date\">".$createdTime->format('m/d/y H:i')."</td>";
-                           echo "<td id=\"date\">".$sentTime->format('m/d/y H:i')."</td>";                          
+                           echo "<td id=\"date\">".$sentTime->format('m/d/y H:i')."</td>"; 
+                           echo "<td></td>";
+                           echo '<td><input type="checkbox" name="deleted[]" value="'.$inboxDir."/".$fileName.'" /></td>';                     
                            echo " </tr>";
                          
 
@@ -83,6 +88,8 @@
    
            
             ?>
+            <tr><td><td></td></td><td></td><td></td><td></td><td></td><td><input id="save" type="submit" value="DELETE"></td>  </tr>
+            </form>
        </table>
     </body>
 

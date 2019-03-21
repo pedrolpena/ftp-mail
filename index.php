@@ -13,7 +13,7 @@
                     --><li><a href="messagelist.php" target="messageIframe">Inbox</a></li><!--
                     --><li><a href="outboxlist.php" target="messageIframe">Outbox</a></li><!--
                     --><li><a href="sentlist.php" target="messageIframe">Sent</a></li><!--
-                    --><li><a href="smswindow.php" target="messageIframe">SMS</a></li>
+                    --><li><a href="trashlist.php" target="messageIframe">Trash</a></li>
                     </ul>
             </td>
         <tr >
