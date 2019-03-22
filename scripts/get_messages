@@ -49,10 +49,10 @@ IFS=$IFSBak
 if [ ! -d "$inbox/$mailUser/tmp"  ]; then
     mkdir -p $inbox'/'$mailUser'/tmp'
     chgrp www-data $inbox/$mailUser
-    chmod 775 $inbox/$mailUser
+    chmod 777 $inbox/$mailUser
     chown www-data $inbox/$mailUser'/tmp'
     chgrp www-data $inbox/$mailUser'/tmp'
-    chmod 775 $inbox/$mailUser'/tmp'
+    chmod 777 $inbox/$mailUser'/tmp'
     chown www-data $inbox/$mailUser'/tmp'   
 fi  
 
@@ -67,6 +67,4 @@ mdel *.*
 bye
 EOF
 mv $inbox/$mailUser'/tmp/'* $inbox/$mailUser/ 2>/dev/null
-
-
 

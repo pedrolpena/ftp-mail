@@ -31,6 +31,12 @@
 		   $ini_array = parse_ini_file("./cfg/config.ini");
 		   $mailUser=$ini_array['mailUser'];
            $inboxDir = $ini_array['inbox']."/".$mailUser;
+           if( !file_exists($inboxDir.'/tmp') )
+           {
+			 $oldmask = umask(0);
+			 mkdir($inboxDir.'/tmp', 0777, true);
+			 umask($oldmask); 
+		   }
            
            // Open a directory, and read its contents
            if (is_dir($inboxDir))
@@ -88,7 +94,7 @@
    
            
             ?>
-            <tr><td><td></td></td><td></td><td></td><td></td><td></td><td><input id="save" type="submit" value="DELETE"></td>  </tr>
+            <tr><td><td></td></td><td></td><td></td><td></td><td></td><td><input id="save" type="submit" value="TRASH"></td>  </tr>
             </form>
        </table>
     </body>

@@ -28,7 +28,12 @@ $ini_array = parse_ini_file("./cfg/config.ini");
 $mailUser=$ini_array['mailUser'];
 $queue = $ini_array['outboxQueue'];
 
-
+           if( !file_exists($queue) )
+           {
+			 $oldmask = umask(0);			 
+			 mkdir($queue, 0777, true);
+			 umask($oldmask);   
+		   }
            // Open a directory, and read its contents
            if (is_dir($queue))
            {

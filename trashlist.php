@@ -10,6 +10,7 @@
 
     <body>
        <table>
+		   <form  method="post" action="deletefiles.php">		   
 		   <tr>
 			   <td></td>
 			   <td id="messageHeader"><u><b>TRASH</b></u></td>
@@ -22,13 +23,21 @@
            <td><u><b>Subject</b></u></td>
            <td id="date">    </td>
            <td id="date"><u><b>Date Rcvd (GMT)</b></u></td>
-           <td id="date"><u><b>Date Sent (GMT)</b></u></td>           
+           <td id="date"><u><b>Date Sent (GMT)</b></u></td> 
+           <td></td>
+           <td><u><b>Delete</b></u></td>          
            </tr>
            		   
 		   <?php
 		   $ini_array = parse_ini_file("./cfg/config.ini");
 		   $mailUser=$ini_array['mailUser'];
            $trashDir = $ini_array['trash']."/".$mailUser;
+           if( !file_exists($trashDir) )
+           {
+			   $oldmask = umask(0);			 
+	           mkdir($trashDir, 0777, true);
+	           umask($oldmask);
+            }           
            
            // Open a directory, and read its contents
            if (is_dir($trashDir))
@@ -76,7 +85,9 @@
                            echo " </td>";
                            echo "<td id=\"date\">";
                            echo "<td id=\"date\">".$createdTime->format('m/d/y H:i')."</td>";
-                           echo "<td id=\"date\">".$sentTime->format('m/d/y H:i')."</td>";                          
+                           echo "<td id=\"date\">".$sentTime->format('m/d/y H:i')."</td>"; 
+                           echo "<td></td>";
+                           echo '<td><input type="checkbox" name="deleted[]" value="'.$trashDir."/".$fileName.'" /></td>';                                                    
                            echo " </tr>";
                          
 
@@ -91,6 +102,8 @@
    
            
             ?>
+            <tr><td><td></td></td><td></td><td></td><td></td><td></td><td></td><td><input id="save" type="submit" value="DELETE"></td>  </tr>
+            </form>            
        </table>
     </body>
 

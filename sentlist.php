@@ -10,6 +10,7 @@
 
     <body>
        <table>
+		   <form  method="post" action="trashfiles.php">
 		   <tr>
 			   <td></td>
 			   <td id="messageHeader"><u><b>SENT MESSAGES</b></u></td>
@@ -21,7 +22,9 @@
            <td><u><b>Subject</b></u></td>
            <td id="date">    </td>
            <td id="date"><u><b>Date Created (GMT)</b></u></td>
-           <!--<td id="date"><u><b>Date Sent (GMT)</b></u></td> -->          
+           <!--<td id="date"><u><b>Date Sent (GMT)</b></u></td> -->
+           <td></td>
+           <td><u><b>Delete</b></u></td>         
            </tr>
            		   
 		   <?php
@@ -29,6 +32,12 @@
 		   $mailUser=$ini_array['mailUser'];
            $sentDir = $ini_array['sent']."/".$mailUser;
            $queue = $ini_array['outboxQueue'];
+           if( !file_exists($sentDir) )
+           {
+			 $oldmask = umask(0);			 
+			 mkdir($sentDir, 0777, true);  
+		     umask($oldmask);
+		   }           
            
            // Open a directory, and read its contents
            if (is_dir($sentDir))
@@ -73,7 +82,9 @@
                            echo " </td>";
                            echo "<td id=\"date\">";
                            echo "<td id=\"date\">".$createdTime->format('m/d/y H:i')."</td>";
-                           //echo "<td id=\"date\">".$sentTime->format('m/d/y H:i')."</td>";                          
+                           //echo "<td id=\"date\">".$sentTime->format('m/d/y H:i')."</td>"; 
+                           echo "<td></td>";
+                           echo '<td><input type="checkbox" name="deleted[]" value="'.$sentDir."/".$fileName.'" /></td>';                                                    
                            echo " </tr>";
 					   }//end if
                          
@@ -90,6 +101,8 @@
    
            
             ?>
+            <tr><td><td></td></td><td></td><td></td><td></td><td><input id="save" type="submit" value="TRASH"></td>  </tr>
+            </form>            
        </table>
     </body>
 
