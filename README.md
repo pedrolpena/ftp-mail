@@ -32,6 +32,36 @@ sudo apt-get install apache2 php8.1 libapache2-mod-php8.1 ncftp
 sudo /etc/init.d/apache2 restart
 ```
 
+The apache php module reference has to be updated.
+```bash
+cd /etc/apache2/mods-enabled
+ls -l *php*
+```
+
+you should see something like the following
+```bash
+lrwxrwxrwx 1 root root 29 Jan 11  2023 php7.4.conf -> ../mods-available/php7.4.conf
+lrwxrwxrwx 1 root root 29 Jan 11  2023 php7.4.load -> ../mods-available/php7.4.load
+```
+
+Delete these files if they are not php8.1 in this example do the following
+
+```bash
+sudo rm php7.4.conf php7.4.load
+```
+
+Create the new links
+```bash
+sudo ln -s ../mods-available/php8.1.load php8.1.load  
+sudo ln -s ../mods-available/php8.1.conf php8.1.conf 
+```
+Restart Apache
+
+```bash
+sudo systemctl restart apache2
+```
+
+
 -clone/compile and run autoftp
 ```bash
 git clone https://github.com/pedrolpena/auto-ftp.git
