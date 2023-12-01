@@ -25,6 +25,13 @@ sudo apt-get update
 sudo apt-get install apache2 php libapache2-mod-php ncftp
 sudo /etc/init.d/apache2 restart
 ```
+-for ubunutu 22.04
+```bash
+sudo apt-get update
+sudo apt-get install apache2 php8.1 libapache2-mod-php8.1 ncftp
+sudo /etc/init.d/apache2 restart
+```
+
 -clone/compile and run autoftp
 ```bash
 git clone https://github.com/pedrolpena/auto-ftp.git
